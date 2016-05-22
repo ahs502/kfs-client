@@ -1,0 +1,25 @@
+{
+  "name": "localforage-kfs",
+  "version": "1.0.0",
+  "description": "Extends Mozilla's localForage to work synchronized with server-side key-file-storage module.",
+  "main": "dist/localForage-kfs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahs502/localforage-kfs.git"
+  },
+  "keywords": [
+    "key",
+    "value",
+    "localforage",
+    "ke-file-storage"
+  ],
+  "author": "Hessam A Shokravi <ahs502@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahs502/localforage-kfs/issues"
+  },
+  "homepage": "https://github.com/ahs502/localforage-kfs#readme"
+}
