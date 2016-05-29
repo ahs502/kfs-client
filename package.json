@@ -1,25 +1,35 @@
 {
-  "name": "localforage-kfs",
+  "name": "kfs-client",
   "version": "1.0.0",
-  "description": "Extends Mozilla's localForage to work synchronized with server-side key-file-storage module.",
-  "main": "dist/localForage-kfs.js",
+  "description": "A simple browser-side key-value storage upon Mozilla's localForage or just localStorage and can be synchronized with kfs-server module.",
+  "main": "dist/kfs-client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahs502/localforage-kfs.git"
+    "url": "git+https://github.com/ahs502/kfs-client.git"
   },
   "keywords": [
     "key",
     "value",
     "localforage",
-    "ke-file-storage"
+    "localStorage",
+    "synchronize",
+    "ke-file-storage",
+    "kfs-server"
   ],
   "author": "Hessam A Shokravi <ahs502@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ahs502/localforage-kfs/issues"
+    "url": "https://github.com/ahs502/kfs-client/issues"
   },
-  "homepage": "https://github.com/ahs502/localforage-kfs#readme"
+  "homepage": "https://github.com/ahs502/kfs-client#readme",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7"
+  }
 }
