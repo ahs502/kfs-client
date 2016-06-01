@@ -9,13 +9,17 @@ var del = require('del');
 ///////////////////////////////////////////////////////////
 
 var paths = {
-    src: [
-        "./src/module.js",
-    ],
+    src: {
+        'localforage': [
+            "./src/module.js",
+        ],
+        // 'localStorage': [
+        //     //...
+        // ],
+    },
     dist: {
         path: "./dist",
-        file: "kfs-client.js",
-        minified: "kfs-client.min.js"
+        name: "kfs-client"
     }
 };
 
@@ -27,18 +31,19 @@ gulp.task('clean', cb => {
     });
 });
 
-gulp.task('build', ['clean'], () =>
-    gulp.src(paths.src)
-    .pipe(concat(paths.dist.file))
-    .pipe(gulp.dest(paths.dist.path)));
-
-gulp.task('minify', ['build'], () =>
-    gulp.src(path.join(paths.dist.path, paths.dist.file))
-    .pipe(concat(paths.dist.minified))
+gulp.task('build-localforage', () =>
+    gulp.src(paths.src['localforage'])
+    .pipe(concat(paths.dist.name + '.localforage.js'))
+    .pipe(gulp.dest(paths.dist.path))
     .pipe(uglify())
+    .pipe(concat(paths.dist.name + '.localforage.min.js'))
     .pipe(gulp.dest(paths.dist.path)));
 
-gulp.task('watch', ['minify'], () =>
-    gulp.watch(paths.src, ['minify']));
+gulp.task('build', ['clean', 'build-localforage']);
+
+gulp.task('watch', ['build'], callback => {
+    gulp.watch(paths.src['localforage'], ['build']);
+    callback();
+});
 
 gulp.task('default', ['watch']);

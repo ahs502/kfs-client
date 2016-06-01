@@ -1,45 +1,45 @@
 /*global localforage*/
+//*global localStorage*/
 
 (function(global) {
 
-    //LOCALFORAGE
     var optionsDefault = {
         url: '/kfs/sync',
-        driverOptions: {
-            //...
-        },
         //...
     };
 
     function KFSClient(options) {
-        
-            var options0 = JSON.parse(JSON.stringify(optionsDefault));
-            if (typeof options === "object") {
-                Object.keys(options).forEach(function(key) {
-                    options0[key] = options[key];
-                });
-            }
-            else if (typeof options === "string") {
-                options0['url'] = options;
-            }
-            this.options = options0;
 
-            //LOCALFORAGE
-            var lf = localforage.createInstance(this.options['driverOptions'] || {});
-            
-            var driver = {
+        var options0 = JSON.parse(JSON.stringify(optionsDefault));
+        if (typeof options === "object") {
+            Object.keys(options).forEach(function(key) {
+                options0[key] = options[key];
+            });
+        }
+        else if (typeof options === "string") {
+            options0['url'] = options;
+        }
+        options = options0;
+        
+        var prePromise=null;
+        var driver,_kfs_;
+        
+        if (options['driver'] === "localforage") {
+            var lf = localforage.createInstance(options['localforage'] || {});
+            driver = {
                 set: lf.setItem,
                 get: lf.getItem,
                 remove: lf.removeItem,
                 clear: lf.clear
             };
-            
-            this.prePromise = ;
+        }
+        else /*if (options['driver'] === "localSorage")*/ {
+            //TODO: Implement driver for localStorage ...
+        }
 
-            var storage = {
-                //
-            };
-            
+        this.storage = {
+            //
+        };
     }
 
     KFSClient.prototype.set = function set(key, value, callback) {
